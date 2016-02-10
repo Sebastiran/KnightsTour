@@ -1,0 +1,25 @@
+#pragma once
+
+#include <Windows.h>
+#include <d2d1.h>
+
+class Graphics
+{
+	ID2D1Factory* factory;
+	ID2D1HwndRenderTarget* rendertarget;
+	ID2D1SolidColorBrush* brush;
+
+public:
+	Graphics();
+	~Graphics();
+
+	bool Init(HWND windowHandle);
+
+	void BeginDraw() { rendertarget->BeginDraw(); }
+	void EndDraw() { rendertarget->EndDraw(); }
+
+	void ClearScreen(float r, float g, float b);
+	void DrawCircle(float x, float y, float radius, D2D1::ColorF color);
+	void DrawRect(float x, float y, float width, float height, D2D1::ColorF color);
+	void DrawLine(float x, float y, float x2, float y2, D2D1::ColorF color);
+};
