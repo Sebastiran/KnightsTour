@@ -67,7 +67,12 @@ void draw()
 	mutex.lock();
 	for (int i = 0; i < tour.size() - 1; i++)
 	{
-		graphics->DrawLine(tour.at(i).first * width + (width / 2), tour.at(i).second * width + (width / 2), tour.at(i + 1).first * width + (width / 2), tour.at(i + 1).second * width + (width / 2), D2D1::ColorF(0.0f, 0.7f, 0.0f, 1.0f));
+		graphics->DrawLine(
+			tour.at(i).first * width + (width / 2), 
+			tour.at(i).second * width + (width / 2), 
+			tour.at(i + 1).first * width + (width / 2), 
+			tour.at(i + 1).second * width + (width / 2), 
+			D2D1::ColorF(0.0f, 0.7f, 0.0f, 1.0f));
 	}
 	mutex.unlock();
 }
