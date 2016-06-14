@@ -30,7 +30,6 @@ std::pair<int, int> moveList[] = {
 std::vector < std::pair<int, int> > tour;
 bool chessboard[size][size];
 
-
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	if (uMsg == WM_DESTROY) { PostQuitMessage(0); return 0; }
@@ -53,18 +52,20 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 void draw()
 {
+	//Draw chessboard
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
 			if ((i + j) % 2 == 0)
 			{
-				graphics->DrawRect(i * width, j * width, width, width, D2D1::ColorF(0.7f, 0.7f, 0.7f, 1.0f));
+				graphics->FillRect(i * width, j * width, width, width, D2D1::ColorF(0.7f, 0.7f, 0.7f, 1.0f));
 			}
 		}
 	}
 
 	mutex.lock();
+	//Draw tour
 	for (int i = 0; i < tour.size() - 1; i++)
 	{
 		graphics->DrawLine(
@@ -80,6 +81,7 @@ void draw()
 bool solve()
 {
 	mutex.lock();
+	//If tour is done, stop.
 	if (tour.size() == size * size)
 	{
 		mutex.unlock();
@@ -87,7 +89,7 @@ bool solve()
 	}
 	mutex.unlock();
 	auto p = tour.back();
-
+	//Make a list of the legal moves in order of possible moves from that legal position from low to high.
 	std::multimap<int, std::pair<int, int> > orderedMovesList;
 	for (const auto &move : moveList)
 	{
@@ -110,7 +112,7 @@ bool solve()
 		}
 		orderedMovesList.insert(std::make_pair(count, move));
 	}
-
+	//Pick the first valid legal move and add it to the tour
 	for (const auto &move: orderedMovesList)
 	{
 		auto x = p.first + move.second.first;
