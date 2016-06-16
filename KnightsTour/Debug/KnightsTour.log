@@ -1,8 +1,0 @@
-﻿  main.cpp
-c:\users\sebastiaan\documents\git\knightstour\knightstour\main.cpp(62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\sebastiaan\documents\git\knightstour\knightstour\main.cpp(69): warning C4018: '<': signed/unsigned mismatch
-c:\users\sebastiaan\documents\git\knightstour\knightstour\main.cpp(76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Graphics.cpp
-  Generating Code...
-c:\users\sebastiaan\documents\git\knightstour\knightstour\graphics.cpp(59): warning C4717: 'Graphics::DrawTextA': recursive on all control paths, function will cause runtime stack overflow
-  KnightsTour.vcxproj -> C:\Users\Sebastiaan\Documents\GIT\KnightsTour\Debug\KnightsTour.exe
